@@ -6,9 +6,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      // Halaman awal saat aplikasi dijalankan
       initialRoute: '/',
-      // Definisi route untuk setiap halaman
       routes: {
         '/': (context) => HomePage(),
         '/item': (context) => ItemPage(),

@@ -32,16 +32,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('Belanja App'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // 🟦 Dua kolom seperti marketplace
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 0.75,
+            crossAxisCount: 2, // 2 kolom seperti marketplace
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: 0.7,
           ),
           itemCount: items.length,
           itemBuilder: (context, index) {
@@ -60,19 +60,25 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
+                    // Hero animation pada gambar
+                    Hero(
+                      tag: item.photo,
                       child: ClipRRect(
-                        borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(12),
+                        ),
                         child: Image.network(
                           item.photo,
+                          height: 120,
+                          width: double.infinity,
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -87,8 +93,7 @@ class HomePage extends StatelessWidget {
                           Text('Stok: ${item.stock}'),
                           Row(
                             children: [
-                              const Icon(Icons.star, size: 16, color: Colors.orange),
-                              const SizedBox(width: 4),
+                              const Icon(Icons.star, color: Colors.orange, size: 16),
                               Text(item.rating.toString()),
                             ],
                           ),

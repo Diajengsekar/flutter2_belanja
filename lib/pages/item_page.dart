@@ -12,31 +12,64 @@ class ItemPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(item.name),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            Hero(
+              tag: item.photo,
               child: Image.network(
                 item.photo,
-                height: 200,
+                width: double.infinity,
+                height: 250,
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 16),
-            Text(
-              item.name,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            Text('Harga: Rp ${item.price}'),
-            Text('Stok: ${item.stock}'),
-            Row(
-              children: [
-                const Icon(Icons.star, color: Colors.orange),
-                const SizedBox(width: 4),
-                Text(item.rating.toString()),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    item.name,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Rp ${item.price}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text('Stok tersedia: ${item.stock}'),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      const Icon(Icons.star, color: Colors.orange, size: 20),
+                      Text('${item.rating} / 5.0'),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Deskripsi Produk',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Produk ${item.name} ini berkualitas tinggi dan sangat cocok untuk kebutuhan sehari-hari Anda. Harga terjangkau dengan stok terbatas!',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
