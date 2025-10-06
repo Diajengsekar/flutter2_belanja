@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import '../models/item.dart';
 
 class ItemPage extends StatelessWidget {
   ItemPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Item Page'),
+        title: Text(itemArgs.name), // tampilkan nama item di AppBar
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'Ini adalah Item Page',
-          style: TextStyle(fontSize: 20),
+          'Harga: ${itemArgs.price}',
+          style: const TextStyle(fontSize: 20),
         ),
       ),
     );
